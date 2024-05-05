@@ -1,0 +1,38 @@
+nav {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+nav ul li button {
+    background-color: #1a1a1a;
+    border: 2px solid transparent;
+    border-radius: 22px;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+    cursor: pointer;
+    outline: none;
+}
+
+nav ul li button:hover, nav ul li button:focus {
+    border-color: #007aff;
+    transform: scale(1.05);
+}
+
+nav ul li button:active, nav ul li button.active {
+    color: #fff;
+    border-color: #0051a3;
+    box-shadow: 0 2px 5px rgba(0, 74, 255, 0.5);
+}

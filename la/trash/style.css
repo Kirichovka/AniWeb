@@ -1,0 +1,179 @@
+/* Сброс стилей для body и html */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #121212; /* Темный фон для body */
+    color: #fff; /* Белый текст для контраста */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Стили для header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #1a1a1a; /* Слегка светлее черного для header */
+    padding: 0 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #333; /* Тонкая граница для разделения */
+}
+
+/* Стили для блока информации о пользователе */
+.user-info {
+    cursor: pointer; /* Показывает, что элемент интерактивный */
+    display: flex;
+    align-items: center; /* Выравнивание элементов внутри по центру */
+    padding: 10px;
+    flex-direction: column; /* Небольшой внутренний отступ */
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px; /* Отступ справа от изображения */
+}
+
+.user-name {
+    color: #fff; /* Белый цвет текста */
+    font-size: 16px; /* Размер шрифта */
+}
+
+/* Стили модального окна как в предыдущем ответе */
+
+/* Стили для навигации */
+nav {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+nav ul li button {
+    background-color: #1a1a1a; /* Чуть светлее черного, согласованно с фоном header */
+    border: 2px solid transparent; /* Прозрачная рамка до наведения */
+    border-radius: 22px;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s; /* Анимация */
+    cursor: pointer;
+    outline: none;
+}
+
+nav ul li button:hover, nav ul li button:focus {
+    border-color: #007aff; /* Светящийся синий цвет при наведении */
+    transform: scale(1.05);
+}
+
+nav ul li button:active, nav ul li button.active {
+    color: #fff; /* Белый текст */
+    border-color: #0051a3; /* Темно-синяя рамка */
+    box-shadow: 0 2px 5px rgba(0, 74, 255, 0.5); /* Добавляем тень */
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный черный фон */
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.modal-content {
+    background-color: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(20px);
+    padding: 20px;
+    border: none;
+    width: 30%;
+    border-radius: 22px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+    opacity: 0; /* Начальная прозрачность */
+    transform: scale(0.95); /* Начальный масштаб */
+    transition: opacity 0.4s ease, transform 0.4s ease; /* Анимация прозрачности и масштаба */
+}
+
+.modal.open .modal-content {
+    opacity: 1; /* Конечная прозрачность */
+    transform: scale(1); /* Конечный масштаб */
+}
+
+
+.close-button {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff; /* Белый цвет для крестика */
+    cursor: pointer;
+}
+
+form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    background: rgba(50, 50, 50, 0.6); /* Темные поля ввода с прозрачностью */
+    border-radius: 18px;
+    color: #fff; /* Белый текст */
+}
+
+.submit-button {
+    display: block; /* Задаем блочное отображение */
+    width: fit-content; /* Ширина по содержимому */
+    margin-left: auto; /* Автоматический отступ слева для выравнивания по правому краю */
+    background-color: #007aff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.button-container {
+    text-align: right; /* Выравнивание содержимого контейнера по правому краю */
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+
+.submit-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.5);
+}

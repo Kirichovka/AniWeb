@@ -1,0 +1,22 @@
+#userInfoProfile {
+    display: none; /* Размещаем элементы в строку */
+    align-items: center; /* Выравниваем элементы по вертикали */
+}
+
+#userImageContainer {
+    width: 150px; /* Ширина рамки */
+    height: 150px; /* Высота рамки */
+    border: 2px dashed #ccc; /* Пунктирная рамка */
+    background-size: cover; /* Изображение будет масштабироваться для заполнения рамки */
+    background-position: center; /* Изображение будет выровнено по центру рамки */
+    background-repeat: no-repeat; /* Изображение не будет повторяться */
+    cursor: pointer; /* Курсор изменится при наведении для указания на интерактивность */
+}
+
+#userInfoDetails {
+    margin-left: 20px; /* Отступ слева для разделения между рамкой и текстом */
+}
+
+.label{
+	display: block;
+}

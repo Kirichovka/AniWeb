@@ -1,0 +1,41 @@
+/* Стили для формы регистрации */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Общие стили для текстовых полей */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 18px; /* Скругленные углы */
+    background-color: rgba(255, 255, 255, 0.1); /* Прозрачный белый фон */
+    color: #fff; /* Белый текст */
+}
+
+/* Стили для кнопки "Зарегистрироваться" */
+button[type="submit"] {
+    background-color: rgba(0, 0, 0, 0); /* Прозрачный фон */
+    color: #fff; /* Белый текст */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Полупрозрачная белая рамка */
+    padding: 10px 20px;
+    border-radius: 18px; /* Скругленные углы */
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Изменение цвета кнопки при наведении */
+button[type="submit"]:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Затемненный фон при наведении */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Легкая тень */
+}
+
+/* Стили для контейнера кнопок */
+.button-container {
+    text-align: right; /* Выравнивание по правому краю */
+}

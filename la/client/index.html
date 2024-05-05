@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навигационное меню в стиле Apple</title>
+    <link rel="stylesheet" href="http://localhost:3001/styles/form.css">
+    <link rel="stylesheet" href="http://localhost:3001/styles/header.css">
+    <link rel="stylesheet" href="http://localhost:3001/styles/modal.css">
+    <link rel="stylesheet" href="http://localhost:3001/styles/navigation.css">
+    <link rel="stylesheet" href="http://localhost:3001/styles/reset.css">
+    <link rel="stylesheet" href="http://localhost:3001/styles/user-info.css">
+    <link rel="stylesheet" href="http://localhost:3001/styles/userInfoProfile.css">
+</head>
+<body>
+    <header>
+        <div class="user-info" id="userInfo">
+            <img src="avatar.jpg" alt="Аватар пользователя" class="user-avatar">
+            <span class="user-name">Имя пользователя</span>
+        </div>
+        <nav>
+            <ul>
+                <li><button class="nav-button">Главная</button></li>
+                <li><button class="nav-button">Смотреть</button></li>
+                <li><button class="nav-button">Рекомендации</button></li>
+                <li><button class="nav-button">Расписание</button></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeButton">&times;</span>
+            <div id="userInfoProfile">
+                <h2 class="label">Личный кабинет</h2>
+                <div id="userImageContainer">
+                    <input type="file" id="imageInput" style="display: none;">
+                </div>
+                <div id="userInfoDetails">
+                    <p><strong>Имя:</strong> <span id="userName"></span></p>
+                    <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                </div>
+            </div>
+
+            <div id="registrationForm">
+                <h2>Регистрация</h2>
+                <form id="registerForm">
+                    <input type="text" id="name" placeholder="Имя">
+                    <input type="email" id="email" placeholder="Email">
+                    <input type="password" id="password" placeholder="Пароль">
+                    <button type="submit">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="http://localhost:3001/main.js"></script>
+</body>
+</html>
