@@ -32,13 +32,14 @@
     <div id="modal" class="modal fadeIn">
         <div class="modal-content">
             <span id="closeButton" class="close-button">&times;</span>
-                <button id="logoutButton" style="display: block;">Выйти</button>
+                <button id="logoutButton" style="display: none;">Выйти</button>
             <!-- Профиль пользователя -->
             <div id="userInfoProfile" style="display: none;" class="fadeIn">
                 <h2>Личный кабинет</h2>
                 <p><strong>Имя:</strong> <span id="userName">Имя пользователя</span></p>
                 <p><strong>Email:</strong> <span id="userEmail">email@example.com</span></p>
                 <button id="editProfileButton">Редактировать профиль</button>
+                <button id="logoutButton" class="form-button">Выйти</button>
             </div>
 
             <!-- Форма редактирования профиля -->
@@ -52,7 +53,7 @@
             </form>
 
             <!-- Форма регистрации -->
-            <form id="registerForm" style="display: block;" class="fadeIn">
+            <form id="registerForm" style="display: none;" class="fadeIn">
                 <h2>Регистрация</h2>
                 <input type="text" name="username" placeholder="Имя пользователя" required>
                 <input type="email" name="email" placeholder="Email" required>
@@ -61,7 +62,7 @@
             </form>
 
             <!-- Форма входа -->
-            <form id="loginForm" style="display: block;" class="fadeIn">
+            <form id="loginForm" style="display: none;" class="fadeIn">
                 <h2>Вход</h2>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Пароль" required>
