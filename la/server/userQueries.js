@@ -8,8 +8,8 @@ function getUserByEmail(email, callback) {
     connection.query('SELECT * FROM users WHERE email = ?', [email], callback);
 }
 
-function updateUser(email, newName, newEmail, callback) {
-    connection.query('UPDATE users SET name = ?, email = ? WHERE email = ?', [newName, newEmail, email], callback);
+function updateUser(email, newUsername, newEmail, callback) {
+    connection.query('UPDATE users SET username = ?, email = ? WHERE email = ?', [newUsername, newEmail, email], callback);
 }
 
 module.exports = {

@@ -1,7 +1,4 @@
-async function checkLoggedIn() {
-    const profileSection = document.getElementById('profileSection');
-    const registrationForm = document.getElementById('registrationForm');
-
+async function checkLoggedIn(profileSection, registrationForm) {
     try {
         console.log('Проверка, зарегистрирован ли пользователь');
         const response = await fetch('http://localhost:3001/users/check', {
@@ -17,7 +14,7 @@ async function checkLoggedIn() {
                 profileSection.style.display = 'none';
                 registrationForm.style.display = 'block';
             }
-            return false;  // Отмечаем как неавторизованный
+            return false; // Отмечаем как неавторизованный
         } else if (!response.ok) {
             throw new Error(`Ошибка HTTP: ${response.status}`);
         }
@@ -30,15 +27,15 @@ async function checkLoggedIn() {
                 registrationForm.style.display = 'none';
             }
             document.getElementById('userName').innerText = data.name;
-            document.getElementId('userEmail').innerText = data.email;
-            return true;  // Отмечаем как авторизованный
+            document.getElementById('userEmail').innerText = data.email;
+            return true; // Отмечаем как авторизованный
         } else {
             console.log('Пользователь не зарегистрирован');
             if (profileSection && registrationForm) {
                 profileSection.style.display = 'none';
                 registrationForm.style.display = 'block';
             }
-            return false;  // Отмечаем как неавторизованный
+            return false; // Отмечаем как неавторизованный
         }
     } catch (error) {
         console.error('Ошибка проверки пользователя:', error);
@@ -46,7 +43,7 @@ async function checkLoggedIn() {
             profileSection.style.display = 'none';
             registrationForm.style.display = 'block';
         }
-        return false;  // Отмечаем как неавторизованный
+        return false; // Отмечаем как неавторизованный
     }
 }
 

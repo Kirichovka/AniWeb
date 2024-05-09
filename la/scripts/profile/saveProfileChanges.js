@@ -1,20 +1,26 @@
 function saveProfileChanges(saveChangesButton, newNameInput, newEmailInput, profileSection, editProfileForm) {
-    if (saveChangesButton) {
+    if (saveChangesButton && newNameInput && newEmailInput && profileSection && editProfileForm) {
         saveChangesButton.addEventListener('click', async function() {
             console.log('Кнопка saveChangesButton нажата');
-            var newName = newNameInput.value;
-            var newEmail = newEmailInput.value;
+            const newName = newNameInput.value;
+            const newEmail = newEmailInput.value;
+
+            if (!newName || !newEmail) {
+                alert('Имя и Email не могут быть пустыми.');
+                return;
+            }
 
             try {
-                var response = await fetch('http://localhost:3001/users/update', {
+                const response = await fetch('http://localhost:3001/users/update', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
                     },
                     body: JSON.stringify({ newName, newEmail })
                 });
 
-                var data = await response.json();
+                const data = await response.json();
 
                 if (response.ok) {
                     console.log('Изменения сохранены успешно');
@@ -25,13 +31,15 @@ function saveProfileChanges(saveChangesButton, newNameInput, newEmailInput, prof
                     alert('Изменения сохранены успешно.');
                 } else {
                     console.error('Ошибка в ответе сервера:', data.error);
-                    alert(data.error || "Что-то пошло не так. Попробуйте снова.");
+                    alert(data.error || 'Что-то пошло не так. Попробуйте снова.');
                 }
             } catch (error) {
                 console.error('Ошибка запроса:', error);
                 alert('Что-то пошло не так. Попробуйте снова.');
             }
         });
+    } else {
+        console.error('saveChangesButton, newNameInput, newEmailInput, profileSection или editProfileForm не определены');
     }
 }
 

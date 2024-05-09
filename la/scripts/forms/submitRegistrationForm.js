@@ -1,6 +1,4 @@
-// submitRegistrationForm.js
-
-import { loginUser } from '../auth/auth.js';
+import { loginUser } from '../auth/index.js';
 
 async function submitRegistrationForm(profileSection) {
     const registrationForm = document.getElementById('registrationForm');
@@ -26,10 +24,12 @@ async function submitRegistrationForm(profileSection) {
 
                 if (response.ok) {
                     console.log('Регистрация прошла успешно');
-                    loginUser(email, password); // Автоматический вход после успешной регистрации
+                    profileSection.style.display = 'block';
+                    registrationForm.style.display = 'none';
+                    loginUser({ email, password });
                 } else {
                     console.error('Ошибка в ответе сервера:', data.error);
-                    alert(data.error || "Что-то пошло не так. Попробуйте снова.");
+                    alert(data.error || 'Что-то пошло не так. Попробуйте снова.');
                 }
             } catch (error) {
                 console.error('Ошибка запроса:', error);

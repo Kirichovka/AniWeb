@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const { isLoggedIn } = require('./authMiddleware');
-const { createUser, getUserByEmail, updateUser } = require('./userQueries');
+const { createUser, getUserByEmail } = require('./userQueries');
 
 const router = express.Router();
 
@@ -9,20 +9,35 @@ module.exports = function(connection) {
     // Регистрация нового пользователя
     router.post('/register', async (req, res) => {
         try {
-            const { name, email, password } = req.body;
-            const hashedPassword = await bcrypt.hash(password, 10);
-            const userData = { name, email, password: hashedPassword };
+            const { username, email, password } = req.body;
 
-            createUser(userData, (error, results) => {
+            // Проверка на существование пользователя
+            getUserByEmail(email, async (error, results) => {
                 if (error) {
-                    console.error('Ошибка создания нового пользователя: ' + error);
-                    return res.status(500).json({ error: 'Ошибка создания нового пользователя. Пожалуйста, повторите попытку позже.' });
+                    console.error('Ошибка поиска пользователя по email: ' + error);
+                    return res.status(500).json({ error: 'Ошибка поиска пользователя. Пожалуйста, повторите попытку позже.' });
                 }
-                console.log('Новый пользователь успешно создан:', userData);
-                req.session.user = { loggedIn: true, name, email };
-                return res.json({ success: true });
+
+                if (results.length > 0) {
+                    return res.status(409).json({ error: 'Пользователь с данным email уже существует.' });
+                }
+
+                // Хэширование пароля
+                const hashedPassword = await bcrypt.hash(password, 10);
+                const userData = { username, email, password_hash: hashedPassword };
+
+                createUser(userData, (error, results) => {
+                    if (error) {
+                        console.error('Ошибка создания нового пользователя: ' + error);
+                        return res.status(500).json({ error: 'Ошибка создания нового пользователя. Пожалуйста, повторите попытку позже.' });
+                    }
+                    console.log('Новый пользователь успешно создан:', userData);
+                    req.session.user = { loggedIn: true, username, email };
+                    return res.json({ success: true });
+                });
             });
         } catch (error) {
+            console.error('Ошибка в маршруте регистрации:', error);
             return res.status(400).json({ error: error.message });
         }
     });
@@ -42,13 +57,13 @@ module.exports = function(connection) {
             }
 
             const user = results[0];
-            const passwordMatch = await bcrypt.compare(password, user.password);
+            const passwordMatch = await bcrypt.compare(password, user.password_hash);
 
             if (!passwordMatch) {
                 return res.status(401).json({ error: 'Неверные учетные данные.' });
             }
 
-            req.session.user = { loggedIn: true, name: user.name, email: user.email };
+            req.session.user = { loggedIn: true, username: user.username, email: user.email };
             res.json({ success: true });
         });
     });
@@ -77,16 +92,16 @@ module.exports = function(connection) {
 
     // Обновление профиля
     router.post('/update', isLoggedIn, (req, res) => {
-        const { newName, newEmail } = req.body;
+        const { newUsername, newEmail } = req.body;
         const email = req.session.user.email;
 
-        updateUser(email, newName, newEmail, (error, results) => {
+        connection.query('UPDATE users SET username = ?, email = ? WHERE email = ?', [newUsername, newEmail, email], (error, results) => {
             if (error) {
                 console.error('Ошибка обновления профиля: ' + error);
                 return res.status(500).json({ error: 'Ошибка обновления профиля. Пожалуйста, повторите попытку позже.' });
             }
             console.log('Профиль пользователя успешно обновлен.');
-            req.session.user.name = newName;
+            req.session.user.username = newUsername;
             req.session.user.email = newEmail;
             return res.json({ success: true });
         });

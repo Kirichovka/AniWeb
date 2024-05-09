@@ -1,41 +1,76 @@
-/* Стили для формы регистрации */
+/* form.css */
+
+/* Основные стили для всех форм */
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    margin-top: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(30, 30, 30, 0.9); /* Полупрозрачный черный цвет */
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.4s ease;
 }
 
-/* Общие стили для текстовых полей */
+/* Стили для всех input-полей */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 18px; /* Скругленные углы */
-    background-color: rgba(255, 255, 255, 0.1); /* Прозрачный белый фон */
-    color: #fff; /* Белый текст */
+    margin: 10px 0;
+    border: 1px solid #666;
+    background-color: rgba(46, 46, 46, 0.9); /* Полупрозрачный цвет */
+    color: #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-/* Стили для кнопки "Зарегистрироваться" */
-button[type="submit"] {
-    background-color: rgba(0, 0, 0, 0); /* Прозрачный фон */
-    color: #fff; /* Белый текст */
-    border: 1px solid rgba(255, 255, 255, 0.4); /* Полупрозрачная белая рамка */
-    padding: 10px 20px;
-    border-radius: 18px; /* Скругленные углы */
+/* Стиль для всех кнопок внутри формы */
+button[type="submit"],
+button[type="button"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007aff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.4s ease;
 }
 
-/* Изменение цвета кнопки при наведении */
-button[type="submit"]:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Затемненный фон при наведении */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Легкая тень */
+button[type="submit"]:hover,
+button[type="button"]:hover {
+    background-color: #005bb5;
 }
 
-/* Стили для контейнера кнопок */
-.button-container {
-    text-align: right; /* Выравнивание по правому краю */
+/* Сообщение об ошибке */
+#errorMessage {
+    color: red;
+    margin-top: 10px;
+    display: none;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
 }

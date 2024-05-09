@@ -1,9 +1,7 @@
-// profile.js
-
 // Функция для получения информации о профиле пользователя
 export async function getUserProfile(userId) {
     try {
-        const response = await fetch(`http://example.com/profile/${userId}`, {
+        const response = await fetch(`http://localhost:3001/profile/${userId}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -12,12 +10,13 @@ export async function getUserProfile(userId) {
 
         if (response.ok) {
             const userProfileData = await response.json();
-            return userProfileData; // Возвращает информацию о профиле пользователя
+            return userProfileData;
         } else {
             const errorData = await response.json();
             throw new Error(errorData.message);
         }
     } catch (error) {
+        console.error('Ошибка при получении профиля:', error.message);
         throw error;
     }
 }
@@ -25,7 +24,7 @@ export async function getUserProfile(userId) {
 // Функция для обновления информации о профиле пользователя
 export async function updateProfile(newProfileData) {
     try {
-        const response = await fetch('http://example.com/profile/update', {
+        const response = await fetch('http://localhost:3001/profile/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,12 +35,13 @@ export async function updateProfile(newProfileData) {
 
         if (response.ok) {
             const updatedProfileData = await response.json();
-            return updatedProfileData; // Возвращает обновленную информацию о профиле пользователя
+            return updatedProfileData;
         } else {
             const errorData = await response.json();
             throw new Error(errorData.message);
         }
     } catch (error) {
+        console.error('Ошибка при обновлении профиля:', error.message);
         throw error;
     }
 }

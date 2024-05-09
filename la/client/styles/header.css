@@ -1,10 +1,58 @@
+/* header.css */
+
+/* Основные стили для заголовка и навигации */
 header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
-    background-color: #1a1a1a; /* Слегка светлее черного для header */
-    padding: 0 20px;
+    padding: 10px 20px;
+    background-color: #1a1a1a;
+    color: #fff;
     box-sizing: border-box;
-    border-bottom: 1px solid #333; /* Тонкая граница для разделения */
+    animation: fadeIn 0.4s ease;
+    box-sizing: border-box;
+    border-bottom: 1px solid #333;
+}
+
+/* Стили для информации о пользователе в верхней части */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-info .user-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
 }

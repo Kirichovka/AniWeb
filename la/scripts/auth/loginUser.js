@@ -1,7 +1,4 @@
-// loginUser.js
-
-async function loginUser(email, password) {
-    // Implement the login logic
+async function loginUser({ email, password }) {
     try {
         const response = await fetch('http://localhost:3001/users/login', {
             method: 'POST',
@@ -18,7 +15,7 @@ async function loginUser(email, password) {
             localStorage.setItem('token', data.token); // Сохраняем токен в localStorage
         } else {
             console.error('Ошибка входа:', data.error);
-            alert(data.error || "Что-то пошло не так. Попробуйте снова.");
+            alert(data.error || 'Что-то пошло не так. Попробуйте снова.');
         }
     } catch (error) {
         console.error('Ошибка запроса:', error);

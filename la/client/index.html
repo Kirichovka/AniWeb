@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Навигационное меню в стиле Apple</title>
+    <link rel="stylesheet" href="http://localhost:3001/styles/reset.css">
     <link rel="stylesheet" href="http://localhost:3001/styles/form.css">
     <link rel="stylesheet" href="http://localhost:3001/styles/header.css">
     <link rel="stylesheet" href="http://localhost:3001/styles/modal.css">
     <link rel="stylesheet" href="http://localhost:3001/styles/navigation.css">
-    <link rel="stylesheet" href="http://localhost:3001/styles/reset.css">
     <link rel="stylesheet" href="http://localhost:3001/styles/user-info.css">
     <link rel="stylesheet" href="http://localhost:3001/styles/userInfoProfile.css">
 </head>
@@ -27,32 +27,56 @@
             </ul>
         </nav>
     </header>
-    <div class="modal" id="modal">
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal fadeIn">
         <div class="modal-content">
-            <span class="close-button" id="closeButton">&times;</span>
-            <div id="userInfoProfile">
-                <h2 class="label">Личный кабинет</h2>
-                <div id="userImageContainer">
-                    <input type="file" id="imageInput" style="display: none;">
-                </div>
-                <div id="userInfoDetails">
-                    <p><strong>Имя:</strong> <span id="userName"></span></p>
-                    <p><strong>Email:</strong> <span id="userEmail"></span></p>
-                </div>
+            <span id="closeButton" class="close-button">&times;</span>
+                <button id="logoutButton" style="display: block;">Выйти</button>
+            <!-- Профиль пользователя -->
+            <div id="userInfoProfile" style="display: none;" class="fadeIn">
+                <h2>Личный кабинет</h2>
+                <p><strong>Имя:</strong> <span id="userName">Имя пользователя</span></p>
+                <p><strong>Email:</strong> <span id="userEmail">email@example.com</span></p>
+                <button id="editProfileButton">Редактировать профиль</button>
             </div>
 
-            <div id="registrationForm">
+            <!-- Форма редактирования профиля -->
+            <form id="editProfileForm" style="display: none;" class="fadeIn">
+                <label for="newNameInput">Новое имя:</label>
+                <input type="text" id="newNameInput" required>
+                <label for="newEmailInput">Новый Email:</label>
+                <input type="email" id="newEmailInput" required>
+                <button type="button" id="saveChangesButton">Сохранить изменения</button>
+                <button type="button" id="cancelButton">Отмена</button>
+            </form>
+
+            <!-- Форма регистрации -->
+            <form id="registerForm" style="display: block;" class="fadeIn">
                 <h2>Регистрация</h2>
-                <form id="registerForm">
-                    <input type="text" id="name" placeholder="Имя">
-                    <input type="email" id="email" placeholder="Email">
-                    <input type="password" id="password" placeholder="Пароль">
-                    <button type="submit">Зарегистрироваться</button>
-                </form>
-            </div>
+                <input type="text" name="username" placeholder="Имя пользователя" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+
+            <!-- Форма входа -->
+            <form id="loginForm" style="display: block;" class="fadeIn">
+                <h2>Вход</h2>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+                <button type="submit">Войти</button>
+            </form>
+
+            <!-- Сообщение об ошибке -->
+            <div id="errorMessage" style="display:none; color:red;"></div>
         </div>
     </div>
+
+    <!-- Кнопка выхода -->
+    
 
     <script type="module" src="http://localhost:3001/main.js"></script>
 </body>
 </html>
+

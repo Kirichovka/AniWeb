@@ -1,7 +1,22 @@
+/* navigation.css */
+
+/* Основные стили для навигационного меню */
+
 nav {
     display: flex;
     flex: 1;
     justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
 }
 
 nav ul {
@@ -35,4 +50,27 @@ nav ul li button:active, nav ul li button.active {
     color: #fff;
     border-color: #0051a3;
     box-shadow: 0 2px 5px rgba(0, 74, 255, 0.5);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
 }

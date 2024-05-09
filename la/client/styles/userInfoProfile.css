@@ -1,22 +1,98 @@
+/* userInfoProfile.css */
+
+/* Основные стили для профиля пользователя */
 #userInfoProfile {
-    display: none; /* Размещаем элементы в строку */
-    align-items: center; /* Выравниваем элементы по вертикали */
+    background-color: rgba(30, 30, 30, 0.9); /* Полупрозрачный черный цвет */
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#userImageContainer {
-    width: 150px; /* Ширина рамки */
-    height: 150px; /* Высота рамки */
-    border: 2px dashed #ccc; /* Пунктирная рамка */
-    background-size: cover; /* Изображение будет масштабироваться для заполнения рамки */
-    background-position: center; /* Изображение будет выровнено по центру рамки */
-    background-repeat: no-repeat; /* Изображение не будет повторяться */
-    cursor: pointer; /* Курсор изменится при наведении для указания на интерактивность */
+#userInfoProfile h2 {
+    margin-bottom: 20px;
 }
 
-#userInfoDetails {
-    margin-left: 20px; /* Отступ слева для разделения между рамкой и текстом */
+#userInfoProfile p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #fff;
 }
 
-.label{
-	display: block;
+#editProfileButton {
+    padding: 10px 20px;
+    background-color: #007aff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#editProfileButton:hover {
+    background-color: #005bb5;
+}
+
+/* Стили для формы редактирования профиля */
+#editProfileForm {
+    background-color: rgba(30, 30, 30, 0.9); /* Полупрозрачный черный цвет */
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#editProfileForm label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+#editProfileForm input[type="text"],
+#editProfileForm input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #666;
+    background-color: rgba(46, 46, 46, 0.9); /* Полупрозрачный цвет */
+    color: #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#saveChangesButton,
+#cancelButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #007aff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin-top: 10px;
+}
+
+#saveChangesButton:hover,
+#cancelButton:hover {
+    background-color: #005bb5;
+}
+
+#cancelButton {
+    background-color: #e74c3c;
+}
+
+#cancelButton:hover {
+    background-color: #c0392b;
 }

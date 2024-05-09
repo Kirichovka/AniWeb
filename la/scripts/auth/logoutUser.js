@@ -1,5 +1,3 @@
-// logoutUser.js
-
 function logoutUser(logoutButton, profileSection, registrationForm) {
     if (logoutButton) {
         logoutButton.addEventListener('click', async function() {
@@ -18,11 +16,11 @@ function logoutUser(logoutButton, profileSection, registrationForm) {
                     registrationForm.style.display = 'block';
                 } else {
                     console.error('Ошибка выхода');
-                    alert("Не удалось выйти. Попробуйте снова.");
+                    alert('Не удалось выйти. Попробуйте снова.');
                 }
             } catch (error) {
                 console.error('Ошибка запроса на выход:', error);
-                alert("Не удалось выйти. Попробуйте снова.");
+                alert('Не удалось выйти. Попробуйте снова.');
             }
         });
     }

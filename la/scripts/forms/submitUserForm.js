@@ -1,31 +1,31 @@
 function submitUserForm() {
-    var userForm = document.getElementById('userForm');
+    const userForm = document.getElementById('userForm');
     if (userForm) {
         userForm.addEventListener('submit', function(event) {
-            event.preventPreventDefault();
+            event.preventDefault();
             console.log('Отправка формы');
 
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
             console.log('Полученные данные:');
             console.log('Имя:', name);
             console.log('Email:', email);
 
-            var userData = {
-                name: name,
-                email: email,
-                password: password
+            const userData = {
+                name,
+                email,
+                password
             };
 
             fetch('http://localhost:3001/users/check', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(userData),
+                body: JSON.stringify(userData)
             })
             .then(response => {
                 if (!response.ok) {

@@ -1,5 +1,5 @@
 function editProfile(editProfileButton, profileSection, editProfileForm, newNameInput, newEmailInput) {
-    if (editProfileButton) {
+    if (editProfileButton && profileSection && editProfileForm && newNameInput && newEmailInput) {
         editProfileButton.addEventListener('click', function() {
             console.log('Кнопка editProfileButton нажата');
             profileSection.style.display = 'none';
@@ -7,6 +7,8 @@ function editProfile(editProfileButton, profileSection, editProfileForm, newName
             newNameInput.value = document.getElementById('userName').innerText;
             newEmailInput.value = document.getElementById('userEmail').innerText;
         });
+    } else {
+        console.error('editProfileButton, profileSection, editProfileForm, newNameInput или newEmailInput не определены');
     }
 }
 
