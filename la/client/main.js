@@ -9,12 +9,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     const closeButton = document.getElementById('closeButton');
     let modalOpened = false;
 
+    // Инициализация модального окна аутентификации
     const authModal = new AuthModal('modal', 'closeButton');
     const navigation = new Navigation('.nav-button');
 
     const userInfo = document.getElementById('userInfo');
     const userInfoProfile = document.getElementById('userInfoProfile');
-    const registrationFormContainer = document.getElementById('registerForm');
+    const registrationFormContainer = document.getElementById('registrationFormContainer');
+    const loginFormContainer = document.getElementById('loginFormContainer');
     const editProfileButton = document.getElementById('editProfileButton');
     const saveChangesButton = document.getElementById('saveChangesButton');
     const cancelButton = document.getElementById('cancelButton');
@@ -27,9 +29,19 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    openModal(userInfo, modal, value => modalOpened = value, registrationFormContainer);
-    closeModal(closeButton, modal, value => modalOpened = value);
+    // Открытие модального окна
+    userInfo.addEventListener('click', () => authModal.openModal());
 
+    // Закрытие модального окна
+    closeButton.addEventListener('click', () => authModal.closeModal());
+
+    window.addEventListener('click', function (event) {
+        if (event.target === modal && modalOpened) {
+            authModal.closeModal();
+        }
+    });
+
+    // Проверка, авторизован ли пользователь
     const isLoggedIn = await checkLoggedIn(userInfoProfile, registrationFormContainer);
     if (isLoggedIn) {
         userInfoProfile.addEventListener('click', async () => {
@@ -56,6 +68,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
+    // Обработчики форм
     submitUserForm();
     submitRegistrationForm(userInfoProfile);
     logoutUser(document.getElementById('logoutButton'), userInfoProfile, registrationFormContainer);

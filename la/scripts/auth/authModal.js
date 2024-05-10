@@ -17,6 +17,7 @@ class AuthModal {
         this.modalOpened = false;
 
         this.bindEvents();
+        this.addToggleButtons();
     }
 
     bindEvents() {
@@ -41,12 +42,36 @@ class AuthModal {
         }
     }
 
-    openModal() {
+    addToggleButtons() {
+        const toggleLoginButton = document.createElement('button');
+        toggleLoginButton.classList.add('form-toggle-button');
+        toggleLoginButton.id = 'toggleLoginButton';
+        toggleLoginButton.textContent = 'Войти';
+        toggleLoginButton.type = 'button';
+        toggleLoginButton.addEventListener('click', this.showLoginForm.bind(this));
+
+        const toggleRegisterButton = document.createElement('button');
+        toggleRegisterButton.classList.add('form-toggle-button');
+        toggleRegisterButton.id = 'toggleRegisterButton';
+        toggleRegisterButton.textContent = 'Зарегистрироваться';
+        toggleRegisterButton.type = 'button';
+        toggleRegisterButton.addEventListener('click', this.showRegistrationForm.bind(this));
+
+        if (this.registrationFormContainer) this.registrationFormContainer.appendChild(toggleLoginButton);
+        if (this.loginFormContainer) this.loginFormContainer.appendChild(toggleRegisterButton);
+    }
+
+    openModal(showRegistration = true) {
         if (this.modal) {
             this.modal.style.display = 'flex';
             this.modal.classList.add('open');
-            if (this.registrationFormContainer) this.registrationFormContainer.style.display = 'block';
-            if (this.loginFormContainer) this.loginFormContainer.style.display = 'block';
+            if (showRegistration) {
+                if (this.registrationFormContainer) this.registrationFormContainer.style.display = 'none';
+                if (this.loginFormContainer) this.loginFormContainer.style.display = 'none';
+            } else {
+                if (this.registrationFormContainer) this.registrationFormContainer.style.display = 'none';
+                if (this.loginFormContainer) this.loginFormContainer.style.display = 'block';
+            }
             if (this.userInfoProfile) this.userInfoProfile.style.display = 'none';
             this.modalOpened = true;
         } else {
@@ -64,6 +89,18 @@ class AuthModal {
         } else {
             console.error('modal не найден');
         }
+    }
+
+    showRegistrationForm() {
+        this.clearError();
+        if (this.registrationFormContainer) this.registrationFormContainer.style.display = 'none';
+        if (this.loginFormContainer) this.loginFormContainer.style.display = 'none';
+    }
+
+    showLoginForm() {
+        this.clearError();
+        if (this.registrationFormContainer) this.registrationFormContainer.style.display = 'none';
+        if (this.loginFormContainer) this.loginFormContainer.style.display = 'none';
     }
 
     handleOutsideClick(event) {
